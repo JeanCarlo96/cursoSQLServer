@@ -27,25 +27,24 @@ insert into agenda (apellido, nombre, domicilio, telefono)
 insert into agenda (apellido, nombre, domicilio, telefono)
 			values('Salas', 'Susana', 'Gral. Paz 1234', '4123456');
 
--- Elimine el registro cuyo nombre sea 'Juan' (1 registro afectado)
-delete agenda
+-- Mostrar la estructura de la tabla
+exec sp_columns agenda;
+
+-- Modificamos los registros cuyo nombre sea 'Juan' por 'Juan Jose'
+update agenda
+set nombre = 'Juan Jose'
 where nombre = 'Juan';
 
--- Mostrar los datos restantes
-select *
-from agenda;
-
--- Elimine los registros cuto nombre número telefónico sea igual a '4545454' (2 registros afecatados)
-delete agenda
+-- Actualice los registros cuyo numero telefónico sea igual a '4545454' por '4445566'
+update agenda
+set telefono = '4445566'
 where telefono = '4545454';
 
--- Mostrar los datos resultantes
-select *
-from agenda;
+-- Tratemos de actualizar un registro que no existe
+update agenda
+set nombre = 'Juan Jose'
+where nombre = 'Juan';
 
--- Elmine todos los registros
-delete from agenda;
-
--- Mostrar los datos restantes
+-- Mostrando el listado de registros
 select *
 from agenda;
